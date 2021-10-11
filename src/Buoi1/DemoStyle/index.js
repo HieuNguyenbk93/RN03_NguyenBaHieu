@@ -45,7 +45,7 @@ class App extends Component {
                         justifyContent: 'center',
                         alignItems: 'center',
                         borderRadius: 10,
-                        margin: 10,
+                        margin: 11,
                     }}>
                     <Text style={{fontSize: 25}}>Yellow: #F4B940</Text>
                 </View>
