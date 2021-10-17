@@ -4,13 +4,14 @@ import DemoComponent from './src/Buoi1/DemoComponent';
 import DemoStyle from './src/Buoi1/DemoStyle';
 import BaiTapB3 from './src/Buoi3/BaiTap';
 import BinddingData from './src/Buoi3/BinddingData';
+import BTBindding from './src/Buoi3/BTBuoi6-BinddingData';
 import RenderList from './src/Buoi3/RenderList';
 
 // Stateful Component
 class App extends Component {
   render() {
     return (
-      <RenderList />
+      <BTBindding />
     );
   }
 }
