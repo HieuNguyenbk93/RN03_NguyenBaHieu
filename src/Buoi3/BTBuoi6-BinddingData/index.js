@@ -6,6 +6,7 @@ import Haha from './emoji/haha.png';
 import Care from './emoji/care.png';
 import Sad from './emoji/sad.png';
 import Angry from './emoji/angry.png';
+import Icon from './Icon';
 
 const data = [Like, Love, Haha, Care, Sad, Angry]
 
@@ -37,6 +38,17 @@ export default class BTBindding extends Component {
         return res;
     }
 
+    renderEmoji = () => {
+        return data.map( (emoji, index) => (
+            <Icon
+                selectedEmoji = {emoji === this.state.iconShow}
+                key={index} 
+                iconSoure={emoji} 
+                onPress={() => this.clickIcon(emoji)} 
+            /> 
+        ));
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -45,6 +57,9 @@ export default class BTBindding extends Component {
                 
                 <View style={styles.frameIcon}>
                     {this.renderList()}
+                </View>
+                <View style={styles.frameIcon}>
+                    {this.renderEmoji()}
                 </View>
             </View>
         )
