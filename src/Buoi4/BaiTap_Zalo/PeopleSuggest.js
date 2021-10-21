@@ -2,44 +2,9 @@ import React, { Component } from 'react'
 import { Text, TouchableOpacity, View, Image, StyleSheet } from 'react-native'
 
 export default class PeopleSuggest extends Component {
-
-    state = {
-        requestFriend: this.props.data.friendstatus,
-    }
-
-    onPressFriend = (item) => {
-        console.log(item);
-        if (item.friendstatus == 0){
-            this.setState({friendstatus : 1});
-            console.log(this.state.friendstatus);
-        }
-    }
-
-    renderButton = () => {
-        if (this.state.requestFriend == 0){
-            return (
-                <View style={styles.button}>
-                    <TouchableOpacity
-                        onPress={() => this.onPressFriend(this.props.data)} >
-                        <Text style={styles.textbutton}>Kết bạn</Text>
-                    </TouchableOpacity>
-                </View>
-            )
-        }else {
-            return (
-                <View style={[styles.button, {backgroundColor:'#96CC96'}]}>
-                    <TouchableOpacity
-                        onPress={() => this.onPressFriend(this.props.data)} >
-                        <Text style={styles.textbutton}>Kết bạn</Text>
-                    </TouchableOpacity>
-                </View>
-            )
-        }
-    }
     
     render() {
         const {data} = this.props;
-        this.people = data;
         return (
             <View style={styles.container}>
                 <View style={styles.content}>
@@ -52,8 +17,11 @@ export default class PeopleSuggest extends Component {
                         <Text>{data.numofsamefriend} bạn chung</Text>
                     </View>
                 </View>
-                <View>
-                    {this.renderButton()}
+                <View style={styles.button}>
+                    <TouchableOpacity
+                        onPress={() => this.onPressFriend(this.props.data)} >
+                        <Text style={styles.textbutton}>Kết bạn</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
