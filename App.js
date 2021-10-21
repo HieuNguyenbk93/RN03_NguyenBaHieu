@@ -6,6 +6,7 @@ import BaiTapB3 from './src/Buoi3/BaiTap';
 import BinddingData from './src/Buoi3/BinddingData';
 import BTBindding from './src/Buoi3/BTBuoi6-BinddingData';
 import RenderList from './src/Buoi3/RenderList';
+import BtZalo from './src/Buoi4/BaiTap_Zalo';
 import DemoFlatList from './src/Buoi4/DemoFlatList';
 import DemoScroll from './src/Buoi4/DemoScrollView';
 
@@ -13,7 +14,7 @@ import DemoScroll from './src/Buoi4/DemoScrollView';
 class App extends Component {
   render() {
     return (
-      <DemoFlatList />
+      <BtZalo />
     );
   }
 }
