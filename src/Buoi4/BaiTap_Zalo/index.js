@@ -118,7 +118,7 @@ export default class BtZalo extends Component {
                 </View>
                 <FlatList
                     contentContainerStyle = {styles.listSearch}
-                    style = {{flexGrow: 0}}
+                    style = {[{flexGrow: 0}]}
                     data = {this.dataSearch}
                     renderItem = {this.renderListSearch}
                     horizontal={true}
@@ -146,15 +146,14 @@ const styles = StyleSheet.create({
     hearder: {
         flexDirection: 'row',
         alignItems: 'center',
+        marginVertical: 10,
     },
     textContent: {
         fontWeight: 'bold',
         fontSize: 20,
-        marginVertical: 5
     },
     listSearch: {
-        marginVertical: 10,
-        paddingVertical: 10
+        height: 150
     },
     listSuggest: {
         
