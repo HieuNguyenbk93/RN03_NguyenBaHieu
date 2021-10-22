@@ -9,12 +9,13 @@ import RenderList from './src/Buoi3/RenderList';
 import BtZalo from './src/Buoi4/BaiTap_Zalo';
 import DemoFlatList from './src/Buoi4/DemoFlatList';
 import DemoScroll from './src/Buoi4/DemoScrollView';
+import Buoi5 from './src/Buoi5';
 
 // Stateful Component
 class App extends Component {
   render() {
     return (
-      <BtZalo />
+      <Buoi5 />
     );
   }
 }
