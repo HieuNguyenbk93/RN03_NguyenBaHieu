@@ -4,10 +4,13 @@ import LinearGradient from 'react-native-linear-gradient';
 
 export default class ButtonPlayer extends Component {
     render() {
-        const {content, color} = this.props;
+        const {content, color, onPress} = this.props;
         return (
             
-                <TouchableOpacity style={[styles.container, {backgroundColor: color}]}>
+                <TouchableOpacity 
+                    style={[styles.container, {backgroundColor: color}]}
+                    onPress = {onPress}
+                >
                     <Text style={styles.txt}> {content} </Text>
                 </TouchableOpacity>
             

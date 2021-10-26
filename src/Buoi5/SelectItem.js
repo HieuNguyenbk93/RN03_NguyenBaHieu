@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
-import { Text, View, Image, StyleSheet } from 'react-native'
+import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native'
 
 export default class SelectItem extends Component {
     render() {
-        const {sourceImage} = this.props;
+        const {sourceImage, onPress} = this.props;
         return (
-            <View style = {styles.container}>
-                <Image 
-                    style = {styles.image}
-                    source = {sourceImage}
-                />
-            </View>
+            <TouchableOpacity onPress={onPress}>
+                <View style = {styles.container}>
+                    <Image 
+                        style = {styles.image}
+                        source = {sourceImage}
+                    />
+                </View>
+            </TouchableOpacity>
+            
         )
     }
 }
