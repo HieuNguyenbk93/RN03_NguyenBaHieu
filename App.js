@@ -10,12 +10,17 @@ import BtZalo from './src/Buoi4/BaiTap_Zalo';
 import DemoFlatList from './src/Buoi4/DemoFlatList';
 import DemoScroll from './src/Buoi4/DemoScrollView';
 import Buoi5 from './src/Buoi5';
+import {Provider} from 'react-redux'
+import { store } from './src/Buoi6/redux/store';
+import DemoRedux from './src/Buoi6/DemoRedux';
 
 // Stateful Component
 class App extends Component {
   render() {
     return (
-      <Buoi5 />
+      <Provider store={store}>
+        <DemoRedux />
+      </Provider>
     );
   }
 }
