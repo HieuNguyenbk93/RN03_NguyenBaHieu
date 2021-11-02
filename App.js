@@ -11,16 +11,18 @@ import DemoFlatList from './src/Buoi4/DemoFlatList';
 import DemoScroll from './src/Buoi4/DemoScrollView';
 import Buoi5 from './src/Buoi5';
 import {Provider} from 'react-redux'
-import { store } from './src/Buoi6/redux/store';
 import DemoRedux from './src/Buoi6/DemoRedux';
+import store from './src/Buoi7/redux/store';
+import RockPaperScissor from './src/Buoi7/RockPaperScissor';
 
 // Stateful Component
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <DemoRedux />
-      </Provider>
+      <RockPaperScissor />
+    //   <Provider store={store}>
+        
+    //   </Provider>
     );
   }
 }
