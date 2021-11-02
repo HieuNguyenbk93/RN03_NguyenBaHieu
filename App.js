@@ -12,14 +12,19 @@ import DemoScroll from './src/Buoi4/DemoScrollView';
 import Buoi5 from './src/Buoi5';
 import {Provider} from 'react-redux'
 import DemoRedux from './src/Buoi6/DemoRedux';
-import store from './src/Buoi7/redux/store';
+//import store from './src/Buoi7/redux/store';
 import RockPaperScissor from './src/Buoi7/RockPaperScissor';
+import { store } from './src/OnTapRedux/redux/store';
+import OnTapRedux from './src/OnTapRedux';
 
 // Stateful Component
 class App extends Component {
   render() {
     return (
-      <RockPaperScissor />
+      <Provider store={store}>
+        <OnTapRedux />
+      </Provider>
+      // <RockPaperScissor />
     //   <Provider store={store}>
         
     //   </Provider>
