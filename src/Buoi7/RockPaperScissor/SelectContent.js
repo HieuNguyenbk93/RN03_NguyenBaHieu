@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { selectAction } from '../redux/actions/gameAction';
 import SelectItem from './SelectItem';
 
-export default class SelectContent extends Component {
+class SelectContent extends Component {
   renderSelectItem = () => {
-    return this.props.listSelect.map(selectItem => (
+    return this.props.listItem.map(selectItem => (
       <SelectItem
         key={selectItem.id}
         selectImage={selectItem.image}
-        onPress={() => this.props.onSelect(selectItem)}
-        selected={selectItem.id === this.props.playerSelectItem}
+        onPress={() => this.props.select(selectItem)}
+        selected={selectItem.id === this.props.selected.id}
       />
     ));
   };
@@ -17,3 +19,18 @@ export default class SelectContent extends Component {
     return this.renderSelectItem();
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    listItem : state.gameReducer.listImage,
+    selected : state.gameReducer.selected,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    select: (selected) => dispatch(selectAction(selected)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectContent)

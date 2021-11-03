@@ -19,10 +19,9 @@ import RockPaperScissor from './src/Buoi7/RockPaperScissor';
 class App extends Component {
   render() {
     return (
-      <RockPaperScissor />
-    //   <Provider store={store}>
-        
-    //   </Provider>
+      <Provider store={store}>
+        <RockPaperScissor />  
+      </Provider>
     );
   }
 }

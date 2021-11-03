@@ -14,43 +14,13 @@ import ButtonPlayer from './ButtonPlayer';
 import PlayItem from './PlayerItem';
 import SelectItem from './SelectItem';
 import SelectContent from './SelectContent';
+import { connect } from 'react-redux';
+import { playAction } from '../redux/actions/gameAction';
 
-export default class RockPaperScissor extends Component {
-  state = {
-    playerSelect: {id: 'scissor', image: scissor},
-    computerSelect: {id: 'rock', image: rock},
-    listSelect: [
-      {id: 'scissor', image: scissor},
-      {id: 'rock', image: rock},
-      {id: 'paper', image: paper},
-    ],
-    scores: 0,
-    times: 9,
-  };
-
-  onSelect = playerSelect => {
-    this.setState({playerSelect});
-  };
+class RockPaperScissor extends Component {
 
   onPlayPress = () => {
-    if (this.state.times <= 0) {
-      Alert.alert('Game Alert', 'Game Over !!!', [
-        {text: 'cancel', onPress: () => Alert.alert('Cancel Pressed')},
-      ]);
-    } else {
-      let computerSelect;
-      const randomBotSelect = setInterval(() => {
-        computerSelect = this.state.listSelect[Math.floor(Math.random() * 3)];
-        this.setState({computerSelect}, () => {
-          console.log(computerSelect);
-        });
-      }, 200);
-
-      setTimeout(() => {
-        clearInterval(randomBotSelect);
-        this.calResult();
-      }, 2000);
-    }
+    this.props.play();
   };
 
   calResult = () => {
@@ -103,8 +73,7 @@ export default class RockPaperScissor extends Component {
   };
 
   render() {
-    const {playerSelect, computerSelect, times, scores, listSelect} =
-      this.state;
+    const {playerSelect, computerSelect, times, scores,} = this.props;
     return (
       <ImageBackground style={styles.container} source={background}>
         <View style={styles.overlay} />
@@ -118,11 +87,7 @@ export default class RockPaperScissor extends Component {
             />
           </View>
           <View style={styles.selectContainer}>
-            <SelectContent
-              playerSelectItem={playerSelect.id}
-              listSelect={listSelect}
-              onSelect={this.onSelect}
-            />
+            <SelectContent />
           </View>
           <View style={styles.infoContainer}>
             <Text style={styles.infoText}>Scores: {scores}</Text>
@@ -146,6 +111,23 @@ export default class RockPaperScissor extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    playerSelect: state.gameReducer.playerSelect,
+    computerSelect: state.gameReducer.computerSelect,
+    scores: state.gameReducer.scores,
+    times: state.gameReducer.times,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    play: () => dispatch(playAction())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RockPaperScissor);
 
 const styles = StyleSheet.create({
   container: {
