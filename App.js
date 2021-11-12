@@ -14,14 +14,19 @@ import {Provider} from 'react-redux'
 import DemoRedux from './src/Buoi6/DemoRedux';
 import store from './src/Buoi7/redux/store';
 import RockPaperScissor from './src/Buoi7/RockPaperScissor';
+import DemoLifecycle from './src/Buoi8/DemoLifecycle'
+import DemoCallAPI from './src/Buoi8/DemoCallAPI';
+import ListProductScreen from './src/Buoi9/ListProductScreen';
 
 // Stateful Component
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <RockPaperScissor />  
-      </Provider>
+      // <Provider store={store}>
+      //   {/* <RockPaperScissor />   */}
+      //   <DemoCallAPI />
+      // </Provider>
+      <ListProductScreen />
     );
   }
 }
