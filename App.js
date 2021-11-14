@@ -17,6 +17,8 @@ import RockPaperScissor from './src/Buoi7/RockPaperScissor';
 import DemoLifecycle from './src/Buoi8/DemoLifecycle'
 import DemoCallAPI from './src/Buoi8/DemoCallAPI';
 import ListProductScreen from './src/Buoi9/ListProductScreen';
+import OnBoardScreen from './src/Buoi10/OnBoardScreen';
+import RootScreen from './src/Buoi10';
 
 // Stateful Component
 class App extends Component {
@@ -26,7 +28,7 @@ class App extends Component {
       //   {/* <RockPaperScissor />   */}
       //   <DemoCallAPI />
       // </Provider>
-      <ListProductScreen />
+      <RootScreen />
     );
   }
 }
