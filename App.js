@@ -19,16 +19,13 @@ import DemoCallAPI from './src/Buoi8/DemoCallAPI';
 import ListProductScreen from './src/Buoi9/ListProductScreen';
 import OnBoardScreen from './src/Buoi10/OnBoardScreen';
 import RootScreen from './src/Buoi10';
+import ListShoesScreen from './src/ListShoesScreen';
 
 // Stateful Component
 class App extends Component {
   render() {
     return (
-      // <Provider store={store}>
-      //   {/* <RockPaperScissor />   */}
-      //   <DemoCallAPI />
-      // </Provider>
-      <RootScreen />
+      <ListShoesScreen />
     );
   }
 }
