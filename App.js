@@ -20,6 +20,7 @@ import ListProductScreen from './src/Buoi9/ListProductScreen';
 import RootScreen from './src/Buoi10';
 import LoginScreen from './src/Buoi10/LoginScreen';
 import { BackgroundView } from './src/Buoi9/ListProductScreen/component';
+import { NavigationContainer } from '@react-navigation/native';
 
 // Stateful Component
 class App extends Component {
@@ -29,7 +30,10 @@ class App extends Component {
       //   {/* <RockPaperScissor />   */}
       //   <DemoCallAPI />
       // </Provider>
-      <ListProductScreen />
+      <NavigationContainer>
+        <RootScreen />
+      </NavigationContainer>
+      
     );
   }
 }

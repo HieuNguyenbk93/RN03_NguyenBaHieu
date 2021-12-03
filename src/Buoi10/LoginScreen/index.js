@@ -3,6 +3,16 @@ import { SafeAreaView, Text, View, StyleSheet, StatusBar, TextInput, TouchableOp
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Feather from 'react-native-vector-icons/Feather'
 import { Formik } from 'formik'
+import * as Yup from 'yup'
+
+const validateSchema = Yup.object().shape({
+    email: Yup.string()
+        .email('Email không hợp lệ')
+        .required('Email bắt buộc nhập'),
+    password: Yup.string()
+        .min(5, 'Tối thiểu 5 chữ số')
+        .required('Password bắt buộc nhập')
+})
 
 export default class LoginScreen extends Component {
 
@@ -11,6 +21,7 @@ export default class LoginScreen extends Component {
     }
 
     render() {
+        const {navigation} = this.props;
         return (
             <SafeAreaView style={styles.container}>
                 <StatusBar barStyle="light-content"/>
@@ -18,10 +29,11 @@ export default class LoginScreen extends Component {
                     <Text style={styles.text_header}>Welcome!</Text>
                 </View>
                 <Formik
+                    validationSchema = {validateSchema}
                     initialValues= {{email: '', password: ''}}
                     onSubmit={this.onSubmit}
                 >
-                    { ({values, handleChange, handleBlur, handleSubmit}) => (
+                    { ({values, errors, touched, handleChange, handleBlur, handleSubmit}) => (
                         <View style={styles.footer}>
                             <Text style={styles.text_footer}> User </Text>
                             <View style={styles.user_input}>
@@ -36,6 +48,7 @@ export default class LoginScreen extends Component {
                                     onBlur = {handleBlur('email')}
                                 />
                             </View>
+                            <Text>{errors.email}</Text>
                             <Text style={styles.text_footer}> Password </Text>
                             <View style={styles.user_input}>
                                 <Feather name="lock" size={30}/>
@@ -53,6 +66,7 @@ export default class LoginScreen extends Component {
                                     
                                 </TouchableOpacity>
                             </View>
+                            <Text>{errors.password}</Text>
                             <View style={styles.button_group}>
                                 <TouchableOpacity 
                                     style={[styles.button, styles.button_signin]}
@@ -62,6 +76,7 @@ export default class LoginScreen extends Component {
                                 </TouchableOpacity>
                                 <TouchableOpacity 
                                     style={[styles.button, styles.button_signup]}
+                                    onPress = {() => {navigation.navigate('Signup')} }
                                     >
                                     <Text style={[styles.text_button, {color:'#2980b9'}]}>Sign up</Text>
                                 </TouchableOpacity>
@@ -118,7 +133,7 @@ const styles = StyleSheet.create({
     },
     button_group: {
         alignItems: 'center',
-        marginTop: 50,
+        marginTop: 30,
     },
     text_button: {
         fontSize: 20,
